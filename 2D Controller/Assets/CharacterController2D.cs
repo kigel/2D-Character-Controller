@@ -11,10 +11,11 @@ public class CharacterController2D : MonoBehaviour
     public float JumpForce = 0f;
     public LayerMask Ground;
     public GameObject GroundCheck;
+    public GameObject CeilingCheck;
     private Vector3 m_Velocity = Vector3.zero;
     public float MovementSmoothing = .05f;
     public Collider2D CrouchColliderDisable;
-    public float CrouchSpeed;
+    public float CrouchSpeed = .36f;
     public bool IsCrouchButton;
 
     private void Start()
@@ -43,13 +44,12 @@ public class CharacterController2D : MonoBehaviour
 
         if (Input.GetButtonDown("Crouch"))
         {
-            CrouchColliderDisable.enabled = false;
+            IsCrouchButton = true;
         }
         else if (Input.GetButtonUp("Crouch"))
         {
-            CrouchColliderDisable.enabled = true;
+            IsCrouchButton = false;
         }
-
     }
    
     private void FixedUpdate()
@@ -70,6 +70,22 @@ public class CharacterController2D : MonoBehaviour
         isGrounded = Physics2D.OverlapArea(new Vector2(GroundCheck.transform.position.x - 0.5f, GroundCheck.transform.position.y), new Vector2(GroundCheck.transform.position.x + 0.5f, GroundCheck.transform.position.y - 0.05f), Ground);
 
         
+
+        if (IsCrouchButton == true)
+        {
+            CrouchColliderDisable.enabled = false;
+            
+        }
+        else if(IsCrouchButton == false)
+        {
+            CrouchColliderDisable.enabled = true;
+            if (Physics2D.OverlapCircle(CeilingCheck.transform.position, .2f, Ground))
+            {
+                IsCrouchButton = true;
+            }
+
+            
+        }
 
     }
 }
