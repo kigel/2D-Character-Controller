@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 236972832}
   - component: {fileID: 236972831}
   - component: {fileID: 236972830}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 757680781}
   - component: {fileID: 757680780}
   - component: {fileID: 757680782}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ GameObject:
   m_Layer: 0
   m_Name: CeilingCheckPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -444,7 +444,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528062751}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.062, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1705505667}
@@ -483,11 +483,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7f11b0d2c4c3f394f9698e536109dff1, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -501,7 +501,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1705505662}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7f11b0d2c4c3f394f9698e536109dff1, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -527,7 +527,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1705505662}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7f11b0d2c4c3f394f9698e536109dff1, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -572,7 +572,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 34
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -592,8 +592,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705505662}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05, y: 0.04, z: -0.48632812}
-  m_LocalScale: {x: 10, y: 22.93, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.48632812}
+  m_LocalScale: {x: 10, y: 20, z: 1}
   m_Children:
   - {fileID: 1875117337}
   - {fileID: 1528062752}
@@ -609,9 +609,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1705505662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cdbf64cd054a34459b2e96b3ac97329, type: 3}
+  m_Script: {fileID: 11500000, guid: 2282a1176c9023140908f4507bf50c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  Speed: 500
+  JumpForce: 500
+  Ground:
+    serializedVersion: 2
+    m_Bits: 256
+  GroundCheck: {fileID: 1875117336}
+  MovementSmoothing: 0.05
+  CrouchColliderDisable: {fileID: 1705505664}
+  CrouchSpeed: 0
+  IsCrouchButton: 0
 --- !u!1 &1875117336
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,7 +635,7 @@ GameObject:
   m_Layer: 0
   m_Name: GroundCheckPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -636,7 +647,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875117336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.065, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1705505667}
